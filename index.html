@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css" />
+    <title>Soccer Game</title>
+
+</head>
+<body>
+
+    <div class="game-intro">
+        <button id="italy-button">Italy</button>
+        <p>Choose Your Team</p>
+        <button id="england-button">England</button>
+    </div>
+
+    
+    <div id="game-board">
+      <canvas width="1000" height="645" id="canvas"></canvas>
+    </div>
+
+    <!-- order of imports DOES MATTER -->
+    <script src="Component.js"></script>
+    <!-- <script src="js/Player.js"></script> -->
+    <script src="Game.js"></script>
+    <script src="index.js"></script>
+
+</body>
+</html>

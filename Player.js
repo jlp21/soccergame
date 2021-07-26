@@ -3,6 +3,7 @@ class Player extends Component {
         super(classGame, x, y, w, h, imageSrc);
   }
 
+
     shootStraight() {
         // this.shooting === true;
         setInterval(() => {

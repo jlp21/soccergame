@@ -1,13 +1,13 @@
  class Game {
-    constructor(team){
+    constructor(){
         this.canvas = document.getElementById("canvas");
         this.context = this.canvas.getContext("2d");
         this.soccerBall = new Player(this, 200, 305, 30, 30, "./images/soccerball.png")
         this.pickford = new Component(this, 700, 325, 60,60, "./images/pickford.png")
-        this.donna = new Component(this, 700, 325, 60, 60, "./images/donna.png")
+        // this.donna = new Component(this, 700, 325, 60, 60, "./images/donna.png")
         this.score = 0;
         this.opposingScore = 0;
-        this.team = team;
+        // this.team = team;
         this.shooting = false;
     }
 
@@ -16,6 +16,27 @@
 
     start() {
         this.drawLoop();
+        document.addEventListener("keydown", (event) => {
+            console.log(event.code);
+            this.shooting = true;
+            // this.goalieMove();
+            switch (event.code) {
+            case "Digit1":
+              this.soccerBall.shootStraight();
+              this.pickford.goalieMove();
+              break;
+            case "Digit2":
+              this.soccerBall.shootRight();
+              this.pickford.goalieMove();
+               break;
+            case "Digit3":
+              this.soccerBall.shootLeft();
+              this.pickford.goalieMove();
+               break;
+            default:
+                window.alert("Shoot with 1,2 or 3 key");
+                }
+            });   
     }
 
     drawBackground() {
@@ -44,15 +65,13 @@
         this.context.fillText("3: Left", 50, 580)
     }
 
-    drawComponent() { 
-        this.context.drawImage(this.img, this.x, this.y, this.width, this.height);
-    }
 
 
     drawLoop() {
         this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
         this.drawBackground();
         this.soccerBall.drawComponent();
+        this.pickford.drawComponent();
 
 
         this.soccerBall.didBlock(this.soccerBall);

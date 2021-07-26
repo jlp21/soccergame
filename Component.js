@@ -6,14 +6,14 @@ class Component {
         this.width = w;
         this.height = h;
         this.img = new Image();
-        this.img.src = this.game.team === "italy" ? "./images/pickford.png" : "./images/donna.png";
+        this.img.src = imageSrc; //=== "italy" ? "./images/pickford.png" : "./images/donna.png";
         this.goalieY = [151, 300, 424];
     }
 
     //800, 300, 70, 70
 
     drawComponent() { 
-        this.context.drawImage(this.img, this.x, this.y, this.width, this.height);
+        this.game.context.drawImage(this.img, this.x, this.y, this.width, this.height);
     }
 
     goalieMove(y) {

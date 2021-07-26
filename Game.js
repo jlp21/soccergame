@@ -1,11 +1,14 @@
  class Game {
-    constructor(){
+    constructor(team){
         this.canvas = document.getElementById("canvas");
         this.context = this.canvas.getContext("2d");
         this.soccerBall = new Player(this, 200, 305, 30, 30, "./images/soccerball.png")
         this.pickford = new Component(this, 700, 325, 60,60, "./images/pickford.png")
         this.donna = new Component(this, 700, 325, 60, 60, "./images/donna.png")
         this.score = 0;
+        this.opposingScore = 0;
+        this.team = team;
+        this.shooting = false;
     }
 
     //game methods
@@ -13,15 +16,12 @@
 
     start() {
         this.drawLoop();
-
-        this.soccerBall.shoot();
     }
 
     drawBackground() {
         this.context.fillStyle = "green";
         this.context.fillRect(0, 0, this.canvas.width, this.canvas.height);
-
-
+        //Goal
         this.context.strokeStyle = "white";
         this.context.beginPath();
         this.context.moveTo(870, 150);
@@ -31,29 +31,66 @@
         this.context.stroke();
         this.context.lineTo(870,495);
         this.context.stroke();
-
-
+        //Score
         this.context.fillStyle = "white";
         this.context.font = "25px Arial";
-        this.context.fillText(`Score: ${this.score}`, 900, 30);
-
+        this.context.fillText(`Score: ${this.score}`, 50, 30);
+        this.context.fillText(`Opposing Score: ${this.opposingScore}`, 745, 30)
+        //Controls
+        this.context.fillStyle = "white";
+        this.context.font = "30px Arial";
+        this.context.fillText("1: Straight", 50, 520)
+        this.context.fillText("2: Right", 50, 550)
+        this.context.fillText("3: Left", 50, 580)
     }
+
+    drawComponent() { 
+        this.context.drawImage(this.img, this.x, this.y, this.width, this.height);
+    }
+
 
     drawLoop() {
         this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
         this.drawBackground();
         this.soccerBall.drawComponent();
 
-        if("italy-button".onclick === true) {
-            this.pickford.drawComponent();
-        }
-        if("england-button".onclick === true) {
-            this.donna.drawComponent();
-        }
 
-        requestAnimationFrame(() => {
+        this.soccerBall.didBlock(this.soccerBall);
+        this.soccerBall.didScore();
+
+
+
+        if(this.opposingScore === 3) {
+                gameOver();
+            }
+
+        if(this.score === 3) {
+                youWin();
+            }
+        
+            
+        if(this.score < 3 && this.opposingScore < 3) {
+            requestAnimationFrame(() => {
             this.drawLoop();
-          });
+            });
 
+        }
+    }
+    
+
+    youWin() {
+        this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
+        this.drawBackground();
+        this.context.fillStyle = "red";
+        this.context.font = "70px Arial";
+        this.context.fillText("You Win!", 300, 200);
+    }
+
+    gameOver() {
+        this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
+        this.drawBackground();
+        this.context.fillStyle = "red";
+        this.context.font = "70px Arial";
+        this.context.fillText("You Lose!", 300, 200);
     }
 }

@@ -5,19 +5,35 @@
     justify-content: left;
 }
 
-body button {
+#italy-button {
     font-size: 30px;
-    background-color: #870007;
+    background-color: #0b43dd;
     color: #fff;
-    padding: 20px 30px;
+    padding: 20px 40px;
     border: 0;
     box-shadow: 0;
     border-radius: 5px;
     margin-bottom: 20px;
   }
 
+#england-button {
+    font-size: 30px;
+    background-color: #fc0606;
+    color: #fff;
+    padding: 20px 20px;
+    border: 0;
+    box-shadow: 0;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
   p {
-      padding-left: 20px;
-      padding-right: 20px;
-      font-size: larger;
+      padding-top: 40px;
+      padding-left: 40px;
+      padding-right: 40px;
+      padding-bottom: 40px;
+      margin-bottom: 40px;
+      font-size: 30px;
+      color: #fff;
+      background-color: green;
   }

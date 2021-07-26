@@ -1,26 +1,36 @@
 class Player extends Component {
     constructor(classGame, x, y, w, h, imageSrc) {
-      super(classGame, x, y, w, h, imageSrc);
-  
+        super(classGame, x, y, w, h, imageSrc);
+  }
+
+    shootStraight() {
+        // this.shooting === true;
+        setInterval(() => {
+        this.x += 2.5;    
+        }, 1);
     }
 
-    shoot() {
-        document.addEventListener("keydown", (event) => {
-            console.log(event.code);
+    shootRight() {
+        // this.shooting === true;
+        setInterval(() => {
+        this.x += 1.5, this.y += .3;
+        }, 2);
+    }
+
+    shootLeft() {
+        // this.shooting === true;
+        setInterval(() => {
+        this.x += 1.5, this.y -= .3;
+        }, 2);
+    }
+
+    didScore() {
+        if(this.x > 870 && this.shooting){
+            this.shooting === false;
+            this.game.score += 1;
+            console.log({scoring: "GOOOOOOAAALLLLL"});
+            return true;
+        }
+    }
     
-          switch (event.code) {
-            case "Digit1":
-              this.x += 50;
-              break;
-            case "Digit2":
-              this.x += 35; this.y += 7;
-            //   if(this.x >= 850) this.x += 20; this.y -= 20;
-              break;
-            case "Digit3":
-              this.x += 35; this.y -= 7;
-              break;
-            default:
-          }
-        });
-      }
 }

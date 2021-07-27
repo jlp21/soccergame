@@ -22,7 +22,7 @@ class Component {
 
     didBlock(soccerBall) {
         if(soccerBall.x + soccerBall.width === this.x &&
-            soccerBall.y > this.y && soccerBall.y < this.y - this.height) {
+            soccerBall.y >= this.y && soccerBall.y < this.y + this.height) {
             this.opposingScore += 1;
             this.context.fillText("BLOCKED!!", 0, 500);
             return true;

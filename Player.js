@@ -30,7 +30,7 @@ class Player extends Component {
             this.shooting === false;
             this.game.score += 1;
             console.log({scoring: "GOOOOOOAAALLLLL"});
-            return true;
+            return;
         }
     }
     

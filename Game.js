@@ -3,8 +3,8 @@
         this.canvas = document.getElementById("canvas");
         this.context = this.canvas.getContext("2d");
         this.soccerBall = new Player(this, 200, 305, 30, 30, "./images/soccerball.png")
-        this.pickford = new Component(this, 700, 325, 60,60, "./images/pickford.png")
-        // this.donna = new Component(this, 700, 325, 60, 60, "./images/donna.png")
+        this.pickford = new Component(this, 800, 325, 60,60, "./images/pickford.png")
+        // this.donna = new Component(this, 800, 325, 60, 60, "./images/donna.png")
         this.score = 0;
         this.opposingScore = 0;
         // this.team = team;
@@ -74,7 +74,7 @@
         this.pickford.drawComponent();
 
 
-        this.soccerBall.didBlock(this.soccerBall);
+        this.pickford.didBlock(this.soccerBall);
         this.soccerBall.didScore();
 
 

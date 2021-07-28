@@ -3,11 +3,11 @@
         this.canvas = document.getElementById("canvas");
         this.context = this.canvas.getContext("2d");
         this.soccerBall = new Player(this, 200, 305, 30, 30, "./images/soccerball.png")
-        this.pickford = new Component(this, 800, 325, 60,60, "./images/pickford.png")
-        // this.donna = new Component(this, 800, 325, 60, 60, "./images/donna.png")
+        this.pickford = new Component(this, 800, 300, 60, 60, "./images/pickford.png")
+        this.donna = new Component(this, 800, 300, 60, 60, "./images/donna.png")
         this.score = 0;
         this.opposingScore = 0;
-        // this.team = team;
+        this.team = "";
         this.shooting = false;
     }
 
@@ -24,14 +24,17 @@
             case "Digit1":
               this.soccerBall.shootStraight();
               this.pickford.goalieMove();
+              this.donna.goalieMove();
               break;
             case "Digit2":
               this.soccerBall.shootRight();
               this.pickford.goalieMove();
+              this.donna.goalieMove();
                break;
             case "Digit3":
               this.soccerBall.shootLeft();
               this.pickford.goalieMove();
+              this.donna.goalieMove();
                break;
             default:
                 window.alert("Shoot with 1,2 or 3 key");
@@ -71,28 +74,54 @@
         this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
         this.drawBackground();
         this.soccerBall.drawComponent();
+
+        if(this.team === "italy") {
         this.pickford.drawComponent();
+        };
 
 
-        this.pickford.didBlock(this.soccerBall);
-        this.soccerBall.didScore();
+        if(this.pickford.didBlock(this.soccerBall)) {
+            this.opposingScore += 1;
+            // this.context.fillText("BLOCKED!!", 100, 400);
+            window.alert("BLOCKED!!");
+            // shoot a new penalty and reset the ball
+        }
 
+        if(this.team === "england") {
+            this.donna.drawComponent();
+            };
 
-
-        if(this.opposingScore === 3) {
-                gameOver();
-            }
-
-        if(this.score === 3) {
-                youWin();
-            }
+        if(this.donna.didBlock(this.soccerBall)) {
+            this.opposingScore += 1;
+            // this.context.fillText("BLOCKED!!", 100, 400);
+            window.alert("BLOCKED!!");
+            // shoot a new penalty and reset the ball
+        }
         
-            
-        if(this.score < 3 && this.opposingScore < 3) {
-            requestAnimationFrame(() => {
-            this.drawLoop();
-            });
+        if(this.soccerBall.didScore()) {
+            this.score += 1;
+            // this.context.fillText("GOAAAALLLL!!", 100, 400);
+            window.alert("GOOOOAAAALLLL!!");
+        };
 
+
+
+        
+        
+        if(this.score < 10 && this.opposingScore < 10) {
+            requestAnimationFrame(() => {
+                this.drawLoop();
+            });
+            
+            
+            
+            if(this.opposingScore === this.score + 3) {
+                    gameOver();
+                }
+    
+            if(this.score === this.opposingScore + 3) {
+                    youWin();
+                }
         }
     }
     

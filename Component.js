@@ -8,6 +8,8 @@ class Component {
         this.img = new Image();
         this.img.src = imageSrc; //=== "italy" ? "./images/pickford.png" : "./images/donna.png";
         this.goalieY = [151, 300, 424];
+        // this.startingX = x;
+        // this.startingY = y;
     }
 
     //800, 300, 70, 70
@@ -21,10 +23,14 @@ class Component {
     }
 
     didBlock(soccerBall) {
-        if(soccerBall.x + soccerBall.width === this.x &&
-            soccerBall.y >= this.y && soccerBall.y < this.y + this.height) {
-            this.opposingScore += 1;
-            this.context.fillText("BLOCKED!!", 0, 500);
+        if(soccerBall.x + soccerBall.width >= this.x &&
+            soccerBall.y > this.y && soccerBall.y < this.y + this.height) {
+            clearInterval(soccerBall.shooting);
+            this.shooting === null;
+            soccerBall.x = soccerBall.startingX;
+            soccerBall.y = soccerBall.startingY;
+            // this.x = this.startingX;
+            // this.y = this.startingY;
             return true;
         }
     }

@@ -6,7 +6,7 @@ class Component {
         this.width = w;
         this.height = h;
         this.img = new Image();
-        this.img.src = imageSrc; //=== "italy" ? "./images/pickford.png" : "./images/donna.png";
+        this.img.src = imageSrc;
         this.goalieY = [151, 300, 424];
         // this.startingX = x;
         // this.startingY = y;

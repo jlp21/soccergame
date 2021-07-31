@@ -22,6 +22,8 @@
      start() {
          this.soundtrack.play();
          this.soundtrack.volume = 0.1;
+         this.score = 0;
+         this.opposingScore = 0;
          this.drawLoop();
          document.addEventListener("keyup", (event) => {
              console.log(event.code);
@@ -140,4 +142,6 @@
          this.context.font = "70px Arial";
          this.context.fillText("You Lose!", 400, 200);
      }
+
+
  }

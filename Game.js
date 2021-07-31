@@ -23,7 +23,7 @@
          this.soundtrack.play();
          this.soundtrack.volume = 0.1;
          this.drawLoop();
-         document.addEventListener("keydown", (event) => {
+         document.addEventListener("keyup", (event) => {
              console.log(event.code);
              this.shooting = true;
              this.kick.play();

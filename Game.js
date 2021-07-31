@@ -1,5 +1,5 @@
  class Game {
-     constructor(team, imgSrc) {
+     constructor(team, imgSrc, flagSrc, anthemSrc) {
          //move to component
          this.canvas = document.getElementById("canvas");
          this.context = this.canvas.getContext("2d");
@@ -7,6 +7,9 @@
          this.soccerBall = new Player(this, 200, 305, 30, 30, "./images/soccerball.png")
          this.goalie = new Component(this, 800, 300, 60, 60, imgSrc)
          this.kick = new Audio("./sounds/soccerballkick.wav")
+         this.soundtrack = new Audio("./sounds/soccersong.mp3")
+         this.flag = new Component(this, 390, 0, 200, 140, flagSrc)
+         this.anthem = new Audio(anthemSrc)
          this.score = 0;
          this.opposingScore = 0;
          this.team = team;
@@ -17,6 +20,8 @@
      //init or start
 
      start() {
+         this.soundtrack.play();
+         this.soundtrack.volume = 0.1;
          this.drawLoop();
          document.addEventListener("keydown", (event) => {
              console.log(event.code);
@@ -40,7 +45,7 @@
      }
 
      drawBackground() {
-         this.context.fillStyle = "green";
+         this.context.fillStyle = "darkGreen";
          this.context.fillRect(0, 0, this.canvas.width, this.canvas.height);
          //Goal
          this.context.strokeStyle = "white";
@@ -60,9 +65,10 @@
          //Controls
          this.context.fillStyle = "white";
          this.context.font = "30px Arial";
-         this.context.fillText("1: Straight", 50, 520)
-         this.context.fillText("2: Right", 50, 550)
-         this.context.fillText("3: Left", 50, 580)
+         this.context.fillText("Choose Your Kick", 50, 490)
+         this.context.fillText("Key 1: Straight", 50, 520)
+         this.context.fillText("Key 2: Right", 50, 550)
+         this.context.fillText("Key 3: Left", 50, 580)
      }
 
 
@@ -72,6 +78,7 @@
          this.drawBackground();
          this.soccerBall.drawComponent();
          this.goalie.drawComponent();
+         this.flag.drawComponent();
 
 
          if (this.goalie.didBlock(this.soccerBall)) {
@@ -117,16 +124,20 @@
      youWin() {
          this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
          this.drawBackground();
-         this.context.fillStyle = "red";
+         this.soundtrack.pause();
+         this.anthem.play();
+         this.anthem.volume = 0.1;
+         this.context.fillStyle = "lightGreen";
          this.context.font = "70px Arial";
-         this.context.fillText("You Win!", 300, 200);
+         this.context.fillText("You Win!", 400, 200);
      }
 
      gameOver() {
          this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
          this.drawBackground();
+         this.soundtrack.pause();
          this.context.fillStyle = "red";
          this.context.font = "70px Arial";
-         this.context.fillText("You Lose!", 300, 200);
+         this.context.fillText("You Lose!", 400, 200);
      }
  }

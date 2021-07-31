@@ -1,8 +1,15 @@
+body {
+    background-size: cover;
+    background-image:url("../images/euro21.jpeg");
+}
+
+
+
 .game-intro {
+    background-color: transparent;
     display: flex;
     float: top;
-    background-color: white;
-    justify-content: left;
+    justify-content: center;
 }
 
 #italy-button {
@@ -27,6 +34,11 @@
     margin-bottom: 20px;
 }
 
+#game-board{
+    display: flex;
+    justify-content: center;
+}
+
   p {
       padding-top: 40px;
       padding-left: 40px;
@@ -35,5 +47,5 @@
       margin-bottom: 40px;
       font-size: 30px;
       color: #fff;
-      background-color: green;
+      background-color: darkgreen;
   }

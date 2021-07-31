@@ -61,16 +61,16 @@
          this.context.stroke();
          //Score
          this.context.fillStyle = "white";
-         this.context.font = "25px Arial";
-         this.context.fillText(`Score: ${this.score}`, 50, 30);
-         this.context.fillText(`Opposing Score: ${this.opposingScore}`, 745, 30)
+         this.context.font = "15px PressStart";
+         this.context.fillText(`Score: ${this.score}`, 10, 30);
+         this.context.fillText(`Opposing Score: ${this.opposingScore}`, 735, 30)
          //Controls
          this.context.fillStyle = "white";
-         this.context.font = "30px Arial";
-         this.context.fillText("Choose Your Kick", 50, 490)
-         this.context.fillText("Key 1: Straight", 50, 520)
-         this.context.fillText("Key 2: Right", 50, 550)
-         this.context.fillText("Key 3: Left", 50, 580)
+         this.context.font = "15px PressStart";
+         this.context.fillText("Choose Your Kick", 50, 510)
+         this.context.fillText("Key 1: Straight", 50, 540)
+         this.context.fillText("Key 2: Right", 50, 570)
+         this.context.fillText("Key 3: Left", 50, 600)
      }
 
 

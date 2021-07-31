@@ -1,3 +1,6 @@
+@font-face { font-family: PressStart; src: url("images/PressStart2P.ttf"); } 
+
+
 body {
     background-size: cover;
     background-image:url("images/euro21.jpeg");
@@ -6,6 +9,7 @@ body {
 
 
 .game-intro {
+    font-family: PressStart, sans-serif;
     background-color: transparent;
     display: flex;
     float: top;
@@ -13,6 +17,7 @@ body {
 }
 
 #italy-button {
+    font-family: PressStart, sans-serif;
     font-size: 30px;
     background-color: #0b43dd;
     color: #fff;
@@ -24,6 +29,7 @@ body {
   }
 
 #england-button {
+    font-family: PressStart, sans-serif;
     font-size: 30px;
     background-color: #fc0606;
     color: #fff;

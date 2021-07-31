@@ -129,9 +129,9 @@
          this.soundtrack.pause();
          this.anthem.play();
          this.anthem.volume = 0.1;
-         this.context.fillStyle = "lightGreen";
-         this.context.font = "70px Arial";
-         this.context.fillText("You Win!", 400, 200);
+         this.context.fillStyle = "yellow";
+         this.context.font = "50px PressStart";
+         this.context.fillText("You Win!", 300, 200);
      }
 
      gameOver() {
@@ -139,8 +139,8 @@
          this.drawBackground();
          this.soundtrack.pause();
          this.context.fillStyle = "red";
-         this.context.font = "70px Arial";
-         this.context.fillText("You Lose!", 400, 200);
+         this.context.font = "50px PressStart";
+         this.context.fillText("You Lose!", 300, 200);
      }
 
 

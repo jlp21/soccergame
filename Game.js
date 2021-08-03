@@ -25,25 +25,6 @@
          this.score = 0;
          this.opposingScore = 0;
          this.drawLoop();
-         document.addEventListener("keyup", (event) => {
-             console.log(event.code);
-             this.shooting = true;
-             this.kick.play();
-             this.goalie.goalieMove();
-             switch (event.code) {
-                 case "Digit1":
-                     this.soccerBall.shootStraight();
-                     break;
-                 case "Digit2":
-                     this.soccerBall.shootRight();
-                     break;
-                 case "Digit3":
-                     this.soccerBall.shootLeft();
-                     break;
-                 default:
-                     window.alert("Shoot with 1,2 or 3 key");
-             }
-         });
      }
 
      drawBackground() {
@@ -73,7 +54,24 @@
          this.context.fillText("Key 3: Left", 50, 600)
      }
 
-
+     shoot(code) {
+        this.shooting = true;
+        this.kick.play();
+        this.goalie.goalieMove();
+        switch (code) {
+            case "Digit1":
+                this.soccerBall.shootStraight();
+                break;
+            case "Digit2":
+                this.soccerBall.shootRight();
+                break;
+            case "Digit3":
+                this.soccerBall.shootLeft();
+                break;
+            default:
+                window.alert("Shoot with 1,2 or 3 key");
+        }
+     }
 
      drawLoop() {
          this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);

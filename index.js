@@ -2,20 +2,33 @@ window.onload = () => {
 
     // let game = new Game(team);
     // game.start();
-
+    let game;
     document.getElementById("italy-button").addEventListener("click", () => {
-        let game = new Game("italy", "./images/pickford.png", "./images/italyflag.png", "./sounds/italyanthem.mp3");
+        if(game) {
+            game.soundtrack.pause();
+        }
+        game = new Game("italy", "./images/pick.png", "./images/italyflag.png", "./sounds/italyanthem.mp3");
         // game.team = "italy";
-        game.start();
-        })
+        // game.start();
+        gameStart()
+    })
     
     
     document.getElementById("england-button").addEventListener("click", () => {
-        let game = new Game("england", "./images/donna.png", "./images/englandflag.png", "./sounds/englandanthem.mp3");
+        if(game) {
+            game.soundtrack.pause();
+        }
+        game = new Game("england", "./images/don.png", "./images/englandflag.png", "./sounds/englandanthem.mp3");
         // game.team = "england";
-        game.start();
-        })
+        // game.start();
+        gameStart()
+    })
     
-    }   
-
+    function gameStart() {
+        game.start();
+        document.onkeyup = (event) => {
+            game.shoot(event.code);
+        }
+    }
+}   
 
